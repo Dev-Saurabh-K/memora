@@ -2,7 +2,10 @@ import React from 'react'
 
 const topSec = () => {
   return (
-    <div>
+    <div className='w-full h-[70px] mt-10 text-white flex flex-col items-center '>
+
+        <h1 className='text-3xl lg:text-5xl'>Create Your Study Plan</h1>
+        <h3 className='text-zinc-500 lg:text-[20px] lg:mt-4'>Advanced AI-generated content platform</h3>
       
     </div>
   )

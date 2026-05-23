@@ -1,11 +1,16 @@
 import React from 'react'
-import { Home } from 'lucide-react'
+
+import NavbarButtons from './NavbarButtons'
+import ProfileSec from './ProfileSec'
 
 const Navbar = () => {
   return (
-    <div>
-        <h1 className='text-white'>hello</h1>
-        {/* <Home size={30} color="green" className=' w-8' h-10 />  */}
+
+    
+    <div className='pr-6 h-12 w-full  flex gap-4 justify-end' >
+        <NavbarButtons/>
+        <ProfileSec/>
+  
     </div>
   )
 }

@@ -1,5 +1,6 @@
  import React from 'react';
  import {useState} from 'react';
+ import { Link } from "react-router-dom";
  
 
 export default function Dashboard() {
@@ -39,12 +40,14 @@ export default function Dashboard() {
                       })
                      }
                 </div>
+                <Link to="/page2">
                     <div className="pt-7">
                      <button  
                      onClick={handleClick}
                      className="bg-[#2d533c] hover:bg-[#366448] text-[#121212] 
                      font-semibold py-3 px-12 rounded-xl text-base tracking-wide transition-colors shadow-lg" >Continue</button>
                     </div>
+                    </Link>
             </div>
           </div>
   );

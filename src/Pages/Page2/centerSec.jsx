@@ -3,7 +3,6 @@ import FeatureCard from './FeatureCard'
 import {FileText,List,Keyboard} from 'lucide-react'
 
 const centerSec = () => {
-
   const array = [
     {
       Title: "Upload PDF",
@@ -28,9 +27,7 @@ const centerSec = () => {
 
         <FeatureCard title={e.Title} sub={e.subtext} icon={e.Icon}/>
       )
-
-     })}
-
+       })}
       {/* <FeatureCard  icon={}/>
       <FeatureCard  icon={}/> */}
     </div>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Sidebar from "../../Pages/Page2/Sidebar";
 import Navbar from "../../Pages/Page2/Navbar";
 import Logo from "../../logo";
@@ -9,59 +9,102 @@ export default function ChatLayout() {
     const [input, setInput] = useState('');
     const [currentTopic, setCurrentTopic] = useState("");
 
+   
+    useEffect(() => {
+        fetchChats();
+    }, []);
+
+    const fetchChats = async () => {
+        try {
+            const response = await fetch(
+                "http://localhost:8000/api/chat/retrive", 
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                }
+            );
+
+            const data = await response.json();
+
+            console.log(data);
+
+        const chatContent = data.flatMap(chat => [
+       {
+        sender: "user",
+        message: chat.usermessage
+        },
+       {
+        sender: "ai",
+        message: chat.aimessage
+       }
+      ]);
+
+     setChats(chatContent);
+
+
+        } catch(error){
+            console.error("Error fetching chats:", error);
+        }
+    };
+
     const sendChat = async () => {
 
         if (!input.trim()) return;
-          setCurrentTopic(input);
+
+        setCurrentTopic(input);
 
         const userChat = {
-            sender: 'user',
+            sender: "user",
             message: input
         };
 
-     
-        setChats((prev) => [...prev, userChat]);
+        setChats((prev)=> [...prev,userChat]);
 
         const currentChat = input;
         setInput('');
 
-        try {
+        try{
+
             const response = await fetch(
-                'http://localhost:8000/api/chat/send',
+                "http://localhost:8000/api/chat/send",
                 {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
+                    method:"POST",
+                    headers:{
+                        "Content-Type":"application/json"
                     },
                     body: JSON.stringify({
                         message: currentChat,
-                        user_id: '123'
+                        user_id:'123'
                     })
                 }
             );
 
             const data = await response.json();
-            console.log(data);
 
             const aiChat = {
-                sender: 'ai',
-                message: data.message
+                sender:"ai",
+                message:data.message
             };
 
-            setChats((prev) => [...prev, aiChat]);
+            setChats((prev)=> [...prev,aiChat]);
 
-        } catch (error) {
-            console.error(error);
+        }
+        catch(error){
 
-            setChats((prev) => [
+            console.log(error);
+
+            setChats((prev)=>[
                 ...prev,
                 {
-                    sender: 'ai',
-                    message: 'Sorry, something went wrong!'
+                    sender:"ai",
+                    message:"Sorry, something went wrong!"
                 }
             ]);
         }
     };
+
 
     return (
         <div className='h-screen bg-[#121212] flex'>
@@ -88,7 +131,7 @@ export default function ChatLayout() {
                             <div
                                 key={index} className=
                                 {`
-                                max-w-[70%]
+                               
                                 p-3
                                 rounded-xl
                                 text-white

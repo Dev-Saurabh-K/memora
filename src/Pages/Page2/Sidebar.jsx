@@ -8,7 +8,7 @@ const Sidebar = () => {
     <>
    
     
-    <div className='h-full w-[40px] border-r border-zinc-800 lg:w-[60px] flex justify-center   '>
+    <div className='h-full w-10 border-r border-zinc-800 lg:w-15 flex justify-center   '>
 
      
         <SideBarButtons btn="Home"/>

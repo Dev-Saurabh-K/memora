@@ -3,7 +3,7 @@ import FeatureCard from './FeatureCard'
 import {FileText,List,Keyboard} from 'lucide-react'
 
 const centerSec = () => {
-  const array = [
+  const content = [
     {
       Title: "Upload PDF",
       subtext: "Drop your textbook or reference material here. Our AI will scan the chapters, extract key concepts.",
@@ -22,14 +22,13 @@ const centerSec = () => {
   ]
   return (
     <div className='h-[55vh] w-full bg-[#1c1c1e] border border-zinc-800 mt-3 lg:mt-10 rounded-2xl flex flex-row gap-4 items-center justify-center'>
-     {array.map((e)=>{
+     {content.map((e)=>{
       return(
 
         <FeatureCard title={e.Title} sub={e.subtext} icon={e.Icon}/>
       )
        })}
-      {/* <FeatureCard  icon={}/>
-      <FeatureCard  icon={}/> */}
+  
     </div>
   )
 }

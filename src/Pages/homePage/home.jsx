@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../../Pages/page2/Sidebar";
+import Sidebar from "../../Pages/Page2/Sidebar";
 import DasNavbar from "./DasNavbar";
 import Card from "./Card";
 import {Ellipsis} from 'lucide-react';

@@ -14,7 +14,12 @@ const SideBarButtons = (props) => {
 
 
                 <div className='lg:mt-20 mt-15 mb-8 flex flex-col px-2 gap-4'>
-                    <button className='cursor-pointer hover:scale-120 transition duration-300'><Home size={23} color="gray" className='lg:w-8 lg:h-7' /> </button>
+                    
+                    <Link to="/home">
+                    <button className='cursor-pointer hover:scale-120 transition duration-300'>
+                        <Home size={23} color="gray" className='lg:w-8 lg:h-7' /> 
+                    </button>
+                    </Link>
                     
                     <Link to="/chat">
                     <button className='cursor-pointer hover:scale-120 transition duration-300'><MessageCircle size={23} color="gray" className='lg:w-8 lg:h-7' /> 

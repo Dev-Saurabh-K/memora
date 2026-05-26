@@ -14,7 +14,18 @@ function App() {
     <div className='w-screen h-screen bg-black'><h1>kk</h1>
     <Page3/>
     </div>
+import Chat from './Pages/chat/chatLayout'
+import Home from './Pages/homePage/home'
+function App() {
+
+  return (
+    <Routes> 
+    <Route path="/" element={<Dashboard />} />
+    <Route path="/page2" element={<Page2 />} />
+    <Route path="/chat" element={<Chat />} />
+    <Route path="/home" element={<Home />} />
+    </Routes>
   )
 }
 
-export default App
+export default App;

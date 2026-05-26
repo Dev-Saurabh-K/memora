@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import Sidebar from "../../pages/page2/Sidebar";
-import Navbar from "../../pages/page2/Navbar";
-import Logo from "../../logo";
+import { useState } from 'react';
+import Sidebar from "../../Pages/Page2/Sidebar";
+import Navbar from "../../Pages/Page2/Navbar";
+// import Logo from "../../logo";
 
 export default function ChatLayout() {
 

@@ -1,6 +1,6 @@
 import React from "react";
-import NavbarButtons from "../../Pages/page2/NavbarButtons";
-import ProfileSec from "../../Pages/page2/ProfileSec";
+import NavbarButtons from "../../Pages/Page2/NavbarButtons";
+import ProfileSec from "../../Pages/Page2/ProfileSec";
 export default function DasNavbar() {
     return (
         <>

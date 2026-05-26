@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
 
     
-    <div className='pr-6 h-12 w-full  flex gap-4 justify-end' >
+    <div className='pr-6 h-12 w-full  flex gap-4 justify-end border-b border-gray-800' >
         <NavbarButtons/>
         <ProfileSec/>
   

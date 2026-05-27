@@ -28,7 +28,7 @@ const Login = () => {
       formData.append("username", email); 
       formData.append("password", password);
 
-      // 2. Make the POST request to your backend
+   
       const response = await fetch("http://localhost:8000/login", {
         method: "POST",
         headers: {

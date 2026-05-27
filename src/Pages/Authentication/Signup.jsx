@@ -43,7 +43,7 @@ const Signup = () => {
       if (response.ok) {
         console.log('Signup successful!');
         alert('Account created successfully! You can now log in.');
-        
+        navigate("/")
         
         
       } else {
@@ -142,7 +142,7 @@ const Signup = () => {
      
       <div className="flex flex-row gap-1 cursor-pointer mt-2">
         <p className="text-stone-400">Already have an account?</p>
-        <p className="text-[#10B981] active:text-lg transition duration-100" onClick={()=>{navigate("/login")}}>Sign In</p>
+        <p className="text-[#10B981] active:text-lg transition duration-100" onClick={()=>{navigate("/")}}>Sign In</p>
       </div>
     </div>
   );

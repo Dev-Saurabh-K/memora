@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 import {
   Home,
   MessageCircle,
@@ -7,97 +7,54 @@ import {
   Archive,
   List,
   Settings,
+  FileX,
 } from "lucide-react";
 import Logo from "./Logo";
-import { Link } from "react-router-dom";
-const SideBarButtons = (props) => {
+import { Link, useLocation } from "react-router-dom";
+
+
+const SideBarButtons = () => {
+  // const [value, setValue] = useState("one");
+  // const handleChange = (event, newValue) => {
+  //   setValue(newValue);
+  // };
+  const location = useLocation();
+  console.log(location.pathname)
   return (
-    <div className=" h-screen flex flex-col justify-between">
-      <div>
-        <div className="mt-4 px-2 ">
-          <Logo />
+    <div className="h-screen text-stone-100 flex flex-col items-center justify-around ">
+      <Logo/>
+      <div className="h-fit flex flex-col items-center justify-center gap-2">
+        <Link to="/page2" className={`cursor-pointer rounded-md ${location.pathname=="/page2"? "bg-[rgba(84,192,111,0.25)]":"bg-stone-950"}`}>
+        <div>
+          <Home className={`${location.pathname=="/page2"? "text-green-400":"text-stone-100"} m-4`}/>
         </div>
-
-        <div className="lg:mt-20 mt-15 mb-8 flex flex-col px-2 gap-8">
-          <Link to="/home">
-            <button className="cursor-pointer hover:scale-120 transition duration-300">
-              <Home size={23} color="gray" className="lg:w-8 lg:h-7" />
-            </button>
-          </Link>
-
-          <Link to="/chat">
-            <button className="cursor-pointer hover:scale-120 transition duration-300">
-              <MessageCircle size={23} color="gray" className="lg:w-8 lg:h-7" />
-            </button>
-          </Link>
-
-          <button className="cursor-pointer hover:scale-120 transition duration-300">
-            <LayoutGrid size={23} color="gray" className="lg:w-8 lg:h-7" />
-          </button>
-        
-        <div className=' h-screen flex flex-col justify-between'>
-
-            
-            <div className='mt-4 px-2 '><Logo/></div>
-
-
-                <div className='lg:mt-20 mt-15 mb-8 flex flex-col px-2 gap-4'>
-                    
-                    <Link to="/home">
-                    <button className='cursor-pointer hover:scale-120 transition duration-300'>
-                        <Home size={23} color="gray" className='lg:w-8 lg:h-7' /> 
-                    </button>
-                    </Link>
-                    
-                    <Link to="/chat">
-                    <button className='cursor-pointer hover:scale-120 transition duration-300'><MessageCircle size={23} color="gray" className='lg:w-8 lg:h-7' /> 
-                    </button>
-                    </Link>
-
-                    <button className='cursor-pointer hover:scale-120 transition duration-300'><LayoutGrid size={23} color="gray" className='lg:w-8 lg:h-7' /></button>
-                </div>
-
-                <div className=' mb-8 flex flex-col px-2 gap-4'>
-
-                    <Link to="/study-notes">
-                    <button className='cursor-pointer hover:scale-120 transition duration-300'>
-                        <FileText size={23} color="gray" className='lg:w-8 lg:h-7' /></button>
-                    </Link>
-                    
-                    <button className='cursor-pointer hover:scale-120 transition duration-300'>
-                        <Archive size={23} color="gray" className='lg:w-8 lg:h-7' /></button>
-                    
-
-                    <button className='cursor-pointer hover:scale-120 transition duration-300'><List size={23} color="gray" className='lg:w-8 lg:h-7' /></button>
-                </div>
-
-            </div>
-
-            <div className=' mb-4 lg:mb-7 flex flex-col px-2'>
-                <button className='cursor-pointer hover:scale-110 transition duration-320'>
-                    <Settings size={25} color="gray" className='lg:w-9 lg:h-8'  /></button>
-            </div>
-
-        
-          <button className="cursor-pointer hover:scale-120 transition duration-300">
-            <FileText size={23} color="gray" className="lg:w-8 lg:h-7" />
-          </button>
-          <button className="cursor-pointer hover:scale-120 transition duration-300">
-            <Archive size={23} color="gray" className="lg:w-8 lg:h-7" />
-          </button>
-          <button className="cursor-pointer hover:scale-120 transition duration-300">
-            <List size={23} color="gray" className="lg:w-8 lg:h-7" />
-          </button>
+        </Link>
+        <Link to="/chat" className={`cursor-pointer rounded-md ${location.pathname=="/chat"? "bg-[rgba(84,192,111,0.25)] ":"bg-stone-950"}`}>
+        <div >
+          <MessageCircle className={`${location.pathname=="/chat"? "text-green-400":"text-stone-100"} m-4`}/>
         </div>
+        </Link>
+        <Link to="/home" className={`cursor-pointer rounded-md ${location.pathname=="/home"? "bg-[rgba(84,192,111,0.25)] ":"bg-stone-950"}`}>
+        <div >
+          <LayoutGrid className={`${location.pathname=="/home"? "text-green-400":"text-stone-100"} m-4`}/>
+        </div>
+        </Link>
+        <Link to="/study-notes" className={`cursor-pointer rounded-md ${location.pathname=="/study-notes"? "bg-[rgba(84,192,111,0.25)] ":"bg-stone-950"}`}>
+        <div >
+          <FileText className={`${location.pathname=="/study-notes"? "text-green-400":"text-stone-100"} m-4`}/>
+        </div>
+        </Link>
+        <Link to="/history" className={`cursor-pointer rounded-md ${location.pathname=="/history"? "bg-[rgba(84,192,111,0.25)] ":"bg-stone-950"}`}>
+        <div >
+          <List className={`${location.pathname=="/history"? "text-green-400":"text-stone-100"} m-4`}/>
+        </div>
+        </Link>
       </div>
-
-      <div className=" mb-4 lg:mb-7 flex flex-col px-2">
-        <button className="cursor-pointer hover:scale-110 transition duration-320">
-          <Settings size={25} color="gray" className="lg:w-9 lg:h-8" />
-        </button>
+      <div className="fixed bottom-6">
+        <Settings/>
       </div>
     </div>
-  )
+  );
 };
 
 export default SideBarButtons;

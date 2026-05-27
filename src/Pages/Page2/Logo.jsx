@@ -1,13 +1,12 @@
 
-import {SquareM} from "lucide-react"
 
+const Logo = ({classname})=>{
 
-const Logo = () => {
-  return (
-    <div >
-      <SquareM className='lg:w-9 lg:h-9' size={25} color='lightgreen'/>
-    </div>
-  )
+    return(
+        <div className={`text-[#10B981]  font-sans font-bold fixed top-4 ${classname}`}>
+            memora
+        </div>
+    )
 }
 
-export default Logo
+export default Logo;

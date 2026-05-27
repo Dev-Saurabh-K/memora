@@ -4,7 +4,7 @@ import SideBarButtons from "./SideBarButtons";
 const Sidebar = () => {
   return (
     <>
-      <div className="h-full w-10 border-r border-zinc-800 lg:w-15 flex justify-center   ">
+      <div className="h-full w-10  lg:w-15 flex justify-center   ">
         <SideBarButtons />
       </div>
     </>

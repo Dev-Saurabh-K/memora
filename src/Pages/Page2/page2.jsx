@@ -7,7 +7,7 @@ import GenerateButton from './GenerateButton'
 
 function page2(props) {
     return (
-        <div className='bg-[#121212] flex h-screen w-full'>
+        <div className='bg-stone-950 flex h-screen w-full '>
 
             <Sidebar />
             <div className='w-full flex flex-col items-center'>

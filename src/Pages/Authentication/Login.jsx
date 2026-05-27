@@ -68,7 +68,7 @@ const Login = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-black px-4 text-stone-950 flex-col">
-      <Logo />
+      <Logo classname={"text-7xl"}/>
       
       <h2 className="text-[#F8FAFC] font-sans text-3xl font-bold">
         Welcome back!

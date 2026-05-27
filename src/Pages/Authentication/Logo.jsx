@@ -1,9 +1,9 @@
 
 
-const Logo = ()=>{
+const Logo = ({classname})=>{
 
     return(
-        <div className="text-[#10B981]  font-sans text-8xl font-bold fixed top-4">
+        <div className={`text-[#10B981]  font-sans font-bold fixed top-4 ${classname}`}>
             memora
         </div>
     )

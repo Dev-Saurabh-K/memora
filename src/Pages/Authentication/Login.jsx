@@ -8,7 +8,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false); // New loading state
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -23,9 +23,9 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      // 1. Format the data explicitly for FastAPI's OAuth2PasswordRequestForm
+     
       const formData = new URLSearchParams();
-      formData.append("username", email); // FastAPI expects 'username', we pass the email
+      formData.append("username", email); 
       formData.append("password", password);
 
       // 2. Make the POST request to your backend
@@ -39,9 +39,9 @@ const Login = () => {
 
       const data = await response.json();
 
-      // 3. Handle success or failure
+      
       if (response.ok) {
-        // Save the token to local storage
+        
         localStorage.setItem("access_token", data.access_token);
 
         console.log("Login successful! Token saved.");
@@ -49,7 +49,7 @@ const Login = () => {
 
         navigate("/")
       } else {
-        // Display the specific error message from FastAPI (e.g., "Incorrect username or password")
+       
         setErrorMessage(data.detail || "Login failed. Please try again.");
       }
     } catch (error) {

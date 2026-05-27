@@ -24,7 +24,7 @@ const Signup = () => {
     setIsLoading(true);
 
     try {
-      // Typically, signup endpoints expect JSON rather than Form Data
+     
       const response = await fetch('http://localhost:8000/register', {
         method: 'POST',
         headers: {
@@ -44,10 +44,10 @@ const Signup = () => {
         console.log('Signup successful!');
         alert('Account created successfully! You can now log in.');
         
-        // TODO: Redirect the user to the Login page here
+        
         
       } else {
-        // Display backend error (e.g., "Username already exists")
+        
         setErrorMessage(data.detail || 'Signup failed. Please try again.');
       }
     } catch (error) {
@@ -78,7 +78,7 @@ const Signup = () => {
           </div>
         )}
 
-        {/* Username Input Field */}
+       
         <div className="mt-6 flex flex-col gap-1.5">
           <label htmlFor="username" className="text-sm font-semibold text-[#F8FAFC] font-sans">
             Username
@@ -112,7 +112,7 @@ const Signup = () => {
           />
         </div>
 
-        {/* Password Input Field */}
+        
         <div className="mt-4 flex flex-col gap-1.5">
           <label htmlFor="password" className="text-sm font-semibold text-[#F8FAFC] font-sans">
             Password
@@ -129,7 +129,6 @@ const Signup = () => {
           />
         </div>
 
-        {/* Submit Button */}
         <button
           type="button"
           onClick={handleSignup}
@@ -140,7 +139,7 @@ const Signup = () => {
         </button>
       </div>
 
-      {/* Footer Toggle */}
+     
       <div className="flex flex-row gap-1 cursor-pointer mt-2">
         <p className="text-stone-400">Already have an account?</p>
         <p className="text-[#10B981] active:text-lg transition duration-100" onClick={()=>{navigate("/login")}}>Sign In</p>

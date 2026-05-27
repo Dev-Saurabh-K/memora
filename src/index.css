@@ -2,6 +2,7 @@
 
 ::-webkit-scrollbar{
     display: none;
+    /* background-color: rgba(red, green, blue, alpha); */
 }
 
 @keyframes blink{

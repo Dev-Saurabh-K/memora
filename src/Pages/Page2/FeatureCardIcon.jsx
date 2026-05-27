@@ -1,12 +1,9 @@
-import React from 'react'
 
-const FeatureCardIcon = (props) => {
+const FeatureCardIcon = (props, className) => {
     const Icon = props.icons
   return (
     <div>
-      <Icon size={40} className="text-zinc-500 lg:h-15 lg:w-15
-      
-      "/>
+      <Icon size={40} className={`text-zinc-500 lg:h-15 lg:w-15`}/>
     </div>
   )
 }

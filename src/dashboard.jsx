@@ -8,9 +8,6 @@ export default function Dashboard() {
     const [selectedClass, setClasses] = useState(5); 
     const classes = [5,6,7,8,9,10,11,12];
     const handleClick = () => {
-      if (selectedClass) {
-        alert(`You selected Class ${selectedClass}`);
-      }
     };
 
   return (

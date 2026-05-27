@@ -1,19 +1,22 @@
-import { useState } from 'react';
-import Logo from "./Logo"
+import { useState } from "react";
+import Logo from "./Logo";
+import Alert from '@mui/material/Alert';
+
+
 import { useNavigate } from "react-router-dom";
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false); // New loading state
 
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    setErrorMessage('');
+    setErrorMessage("");
 
     if (!email || !password) {
-      setErrorMessage('Please fill in all fields.');
+      setErrorMessage("Please fill in all fields.");
       return;
     }
 
@@ -22,14 +25,14 @@ const Login = () => {
     try {
       // 1. Format the data explicitly for FastAPI's OAuth2PasswordRequestForm
       const formData = new URLSearchParams();
-      formData.append('username', email); // FastAPI expects 'username', we pass the email
-      formData.append('password', password);
+      formData.append("username", email); // FastAPI expects 'username', we pass the email
+      formData.append("password", password);
 
       // 2. Make the POST request to your backend
-      const response = await fetch('http://localhost:8000/login', {
-        method: 'POST',
+      const response = await fetch("http://localhost:8000/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          "Content-Type": "application/x-www-form-urlencoded",
         },
         body: formData,
       });
@@ -39,49 +42,59 @@ const Login = () => {
       // 3. Handle success or failure
       if (response.ok) {
         // Save the token to local storage
-        localStorage.setItem('access_token', data.access_token);
-        
-        console.log('Login successful! Token saved.');
-        alert('Success! You are now logged in.');
-        
-        // TODO: Redirect the user to the dashboard here
-        
+        localStorage.setItem("access_token", data.access_token);
+
+        console.log("Login successful! Token saved.");
+        alert("Success! You are now logged in.");
+
+        navigate("/")
       } else {
         // Display the specific error message from FastAPI (e.g., "Incorrect username or password")
-        setErrorMessage(data.detail || 'Login failed. Please try again.');
+        setErrorMessage(data.detail || "Login failed. Please try again.");
       }
     } catch (error) {
-      console.error('Error during login:', error);
-      setErrorMessage('Network error. Is your backend server running?');
+      console.error("Error during login:", error);
+      setErrorMessage("Network error. Is your backend server running?");
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       handleLogin();
     }
   };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-black px-4 text-stone-950 flex-col">
-
-      <Logo/>
-      <h2 className="text-[#F8FAFC] font-sans text-3xl font-bold">Welcome back!</h2>
-      <p className="text-[#F8FAFC] font-sans">Continue your learning adventure</p>
+      <Logo />
+      
+      <h2 className="text-[#F8FAFC] font-sans text-3xl font-bold">
+        Welcome back!
+      </h2>
+      <p className="text-[#F8FAFC] font-sans">
+        Continue your learning adventure
+      </p>
       <div className="w-full max-w-md rounded-lg p-8 shadow-md text-[#F8FAFC] font-sans">
         {/* <h2 className="text-2xl font-bold tracking-tight text-stone-900">Welcome Back</h2> */}
         {/* <p className="mt-2 text-sm text-stone-600">Please enter your details to sign in.</p> */}
 
         {errorMessage && (
-          <div className="mt-4 rounded border border-red-200 bg-red-50 p-3 text-sm text-red-800">
-            {errorMessage}
-          </div>
+          // <div className="mt-4 rounded border border-red-200 bg-red-50 p-3 text-sm text-red-800">
+          //   {errorMessage}
+          // </div>
+          <Alert severity="error" className="mt-4 rounded border p-3 text-sm">{errorMessage}</Alert>
+          // <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
+          //   {errorMessage}
+          // </Alert>
         )}
 
         <div className="mt-6 flex flex-col gap-1.5">
-          <label htmlFor="email" className="text-sm font-semibold text-[#F8FAFC] font-sans">
+          <label
+            htmlFor="email"
+            className="text-sm font-semibold text-[#F8FAFC] font-sans"
+          >
             Email / Username
           </label>
           <input
@@ -97,13 +110,16 @@ const Login = () => {
         </div>
 
         <div className="mt-4 flex flex-col gap-1.5">
-          <label htmlFor="password" className="text-sm font-semibold text-[#F8FAFC] font-sans">
+          <label
+            htmlFor="password"
+            className="text-sm font-semibold text-[#F8FAFC] font-sans"
+          >
             Password
           </label>
           <input
             type="password"
             id="password"
-            value={email ? password : ''} 
+            value={email ? password : ""}
             onChange={(e) => setPassword(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="••••••••"
@@ -118,10 +134,18 @@ const Login = () => {
           disabled={isLoading}
           className="mt-6 w-full rounded-md bg-[#10B981] py-2.5 text-sm font-semibold text-white transition hover:bg-green-800 active:bg-stone-900 disabled:bg-stone-400"
         >
-          {isLoading ? 'Signing in...' : 'Sign In'}
+          {isLoading ? "Signing in..." : "Sign In"}
         </button>
       </div>
-      <div className="flex flex-row gap-1 cursor-pointer "><p className="text-stone-400">New to EduLearn? </p><p className="text-[#10B981] active:text-lg transition duration-100" onClick={()=> navigate("/signup")}>Create an account</p></div>
+      <div className="flex flex-row gap-1 cursor-pointer ">
+        <p className="text-stone-400">New to EduLearn? </p>
+        <p
+          className="text-[#10B981] active:text-lg transition duration-100"
+          onClick={() => navigate("/signup")}
+        >
+          Create an account
+        </p>
+      </div>
     </div>
   );
 };

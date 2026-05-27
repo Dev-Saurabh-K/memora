@@ -95,7 +95,7 @@ const Signup = () => {
           />
         </div>
 
-        {/* Email Input Field */}
+        
         <div className="mt-4 flex flex-col gap-1.5">
           <label htmlFor="email" className="text-sm font-semibold text-[#F8FAFC] font-sans">
             Email Address

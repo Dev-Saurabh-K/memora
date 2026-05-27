@@ -37,7 +37,7 @@ const SideBarButtons = (props) => {
         
         <div className=' h-screen flex flex-col justify-between'>
 
-            <div>
+            
             <div className='mt-4 px-2 '><Logo/></div>
 
 
@@ -97,7 +97,7 @@ const SideBarButtons = (props) => {
         </button>
       </div>
     </div>
-  );
+  )
 };
 
 export default SideBarButtons;

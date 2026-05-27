@@ -3,8 +3,8 @@ import { useState } from 'react';
 import Sidebar from '../../Pages/Page2/Sidebar';
 import Topbar from './components/Topbar';
 import MainContent from './components/Maincontent';
-import QuizSidebar from './components/QuizSidebar';
-import DefinitionPopup from './components/DefinitionPopup';
+import QuizSidebar from './components/QuizsideBar';
+import DefinitionPopup from './components/definitionPopup';
 
 export default function StudyNotes() {
   const [popupState, setPopupState] = useState({

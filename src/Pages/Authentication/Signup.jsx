@@ -43,7 +43,7 @@ const Signup = () => {
       if (response.ok) {
         console.log('Signup successful!');
         alert('Account created successfully! You can now log in.');
-        
+        navigate("/")
         
         
       } else {

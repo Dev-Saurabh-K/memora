@@ -47,7 +47,7 @@ const Login = () => {
         console.log("Login successful! Token saved.");
         alert("Success! You are now logged in.");
 
-        navigate("/")
+        navigate("/dashboard")
       } else {
        
         setErrorMessage(data.detail || "Login failed. Please try again.");

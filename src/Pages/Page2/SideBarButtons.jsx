@@ -30,8 +30,16 @@ const SideBarButtons = (props) => {
                 </div>
 
                 <div className=' mb-8 flex flex-col px-2 gap-4'>
-                    <button className='cursor-pointer hover:scale-120 transition duration-300'><FileText size={23} color="gray" className='lg:w-8 lg:h-7' /></button>
-                    <button className='cursor-pointer hover:scale-120 transition duration-300'><Archive size={23} color="gray" className='lg:w-8 lg:h-7' /></button>
+
+                    <Link to="/study-notes">
+                    <button className='cursor-pointer hover:scale-120 transition duration-300'>
+                        <FileText size={23} color="gray" className='lg:w-8 lg:h-7' /></button>
+                    </Link>
+                    
+                    <button className='cursor-pointer hover:scale-120 transition duration-300'>
+                        <Archive size={23} color="gray" className='lg:w-8 lg:h-7' /></button>
+                    
+
                     <button className='cursor-pointer hover:scale-120 transition duration-300'><List size={23} color="gray" className='lg:w-8 lg:h-7' /></button>
                 </div>
 

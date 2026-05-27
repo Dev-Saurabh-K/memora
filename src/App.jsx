@@ -5,6 +5,7 @@ import Page2 from './Pages/Page2/page2'
 import Page3 from "./Pages/Page3/page3";
 import Chat from './Pages/chat/chatLayout'
 import Home from './Pages/homePage/home'
+import StudyNotes from "./Pages/StudyNotes/studyNotes";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
     <Route path="/page2" element={<Page2 />} />
     <Route path="/chat" element={<Chat />} />
     <Route path="/home" element={<Home />} />
+    <Route path="/study-notes" element={<StudyNotes />} />
     </Routes>
   )
 }

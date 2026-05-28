@@ -9,6 +9,7 @@ import Home from './Pages/homePage/home'
 import StudyNotes from "./Pages/StudyNotes/studyNotes";
 import Signup from "./Pages/Authentication/Signup";
 import History from "./Pages/History/History"
+import Analytics from "./Pages/Analytics/analytics";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
     <Route path="/subtopics" element={<Home />} />
     <Route path="/study-notes" element={<StudyNotes />} />
     <Route path="/history" element={<History/>}/>
+    <Route path="/analytics" element={<Analytics/>}/>
     </Routes>
   )
 }

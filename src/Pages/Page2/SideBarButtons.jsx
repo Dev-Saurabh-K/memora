@@ -22,7 +22,7 @@ const SideBarButtons = () => {
   console.log(location.pathname)
   return (
     <div className="h-screen text-stone-100 flex flex-col items-center justify-around ">
-      <Logo classname={"text-4xl"}/>
+      <Logo classname={"text-4xl"} />
       <div className="h-fit flex flex-col items-center justify-center gap-2">
         <Link to="/dashboard" className={`cursor-pointer rounded-md ${location.pathname=="/dashboard"? "bg-[rgba(84,192,111,0.25)]":"bg-stone-950"}`}>
         <div>

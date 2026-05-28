@@ -1,40 +1,39 @@
-import { FeatherIcon } from "lucide-react";
-import React, { useState } from "react";
+import React from "react";
 import FeatureIcon from "./FeatureCardIcon";
 
-const FeatureCard = (props) => {
-  const Icons = props.icon;
-
-  const [active, setActive] = useState(false);
-
-  const handleClick = () => {
-    setActive(!active);
-    console.log(active);
-  };
-
+// Destructured the lifted props: isActive and onClick
+const FeatureCard = ({ title, sub, icon: Icon, isActive, onClick }) => {
   return (
     <div
-      onClick={handleClick}
-      className={`border h-[80%] lg:h-[88%] w-[30%] lg:w-[32%] rounded-2xl flex  flex-col border-zinc-700 bg-[#1c1c1e]
-     cursor-pointer px-1  text-white
-    hover:border-4 hover:bg-green-500/10 hover:border-[#3b7a57] hover:shadow-green-400/20 hover:shadow-md
-    
-    ${
-      active
-        ? "border-[#3b7a57] bg-green-500/10 shadow-green-400/20 shadow-md"
-        : "border-zinc-700"
-    }
-    `}
+      onClick={onClick}
+      className={`group w-full p-6 md:p-8 rounded-2xl border-2 flex flex-col items-center justify-center text-center select-none transition-all duration-300 ease-out cursor-pointer
+        ${
+          isActive
+            ? "border-emerald-600 bg-emerald-950/20 shadow-lg shadow-emerald-900/20"
+            : "border-zinc-800 bg-[#141416] hover:border-zinc-600 hover:bg-zinc-900/40 hover:shadow-xl"
+        }
+      `}
     >
-      <div className="flex items-center justify-center w-full h-full flex-col">
-        <FeatureIcon icons={Icons} className={`text-amber-300`} />
-        <h1 className=" text-[14px] md:text-[21px] lg:text-[28px]">
-          {props.title}
-        </h1>
-        <div className="mt-px  text-[10px] md:px-6 md:text-[15px]">
-          <h3 className=" text-zinc-400 text-center">{props.sub}</h3>
-        </div>
+      <div 
+        className={`mb-4 p-3 rounded-xl transition-all duration-300
+          ${isActive 
+            ? "bg-emerald-500/10 text-emerald-400 scale-110" 
+            : "bg-zinc-800/50 text-zinc-400 group-hover:text-amber-400 group-hover:bg-zinc-800"
+          }`}
+      >
+        <FeatureIcon icons={Icon} />
       </div>
+
+      <h3 
+        className={`font-bold tracking-tight transition-colors duration-300 text-lg md:text-xl lg:text-2xl
+          ${isActive ? "text-emerald-400" : "text-zinc-200 group-hover:text-white"}`}
+      >
+        {title}
+      </h3>
+
+      <p className="mt-2 text-xs md:text-sm text-zinc-400 leading-relaxed max-w-xs">
+        {sub}
+      </p>
     </div>
   );
 };

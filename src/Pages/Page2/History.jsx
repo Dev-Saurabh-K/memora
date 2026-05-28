@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const History = () => {
   const [data, setData] = useState([]);
@@ -37,6 +38,17 @@ const History = () => {
         <h2 className="text-3xl font-bold tracking-tight text-stone-100">History</h2>
         <p className="text-sm text-stone-400 mt-1">Your recently reviewed topics</p>
       </div>
+
+      <Link to="/analytics">
+      <button 
+      className={`text-stone-50 w-40 h-10 mt-10 md:mt-8 lg:mt-8
+         bg-green-900 rounded-lg font-semibold shadow-(--primary-color) hover:shadow-(--hover-color)
+          transition-all duration-300 `}
+          >
+      Analytics
+    </button>
+    </Link>
+        
 
       <div className="flex flex-col gap-3">
         {isLoading ? (

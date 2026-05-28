@@ -72,9 +72,9 @@ export default function ChatLayout() {
         <div className='h-screen bg-[#0c0c0e] flex text-zinc-200 font-sans overflow-hidden'>
             <Sidebar />
 
-            <div className='flex-1 flex flex-col min-w-0'>
+            <div className='flex-1 flex flex-col min-w-0 px-12'>
                 {/* Navbar Wrapper */}
-                <div className='w-full border-b border-zinc-800/80 bg-[#121214]/50 backdrop-blur-sm'>
+                <div className='w-full bg-[#0c0c0e]/50 backdrop-blur-sm'>
                     <Navbar />
                 </div>
 

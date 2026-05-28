@@ -24,19 +24,19 @@ const SideBarButtons = () => {
     <div className="h-screen text-stone-100 flex flex-col items-center justify-around ">
       <Logo classname={"text-4xl"}/>
       <div className="h-fit flex flex-col items-center justify-center gap-2">
-        <Link to="/page2" className={`cursor-pointer rounded-md ${location.pathname=="/page2"? "bg-[rgba(84,192,111,0.25)]":"bg-stone-950"}`}>
+        <Link to="/dashboard" className={`cursor-pointer rounded-md ${location.pathname=="/dashboard"? "bg-[rgba(84,192,111,0.25)]":"bg-stone-950"}`}>
         <div>
-          <Home className={`${location.pathname=="/page2"? "text-green-400":"text-stone-100"} m-4`}/>
+          <Home className={`${location.pathname=="/dashboard"? "text-green-400":"text-stone-100"} m-4`}/>
+        </div>
+        </Link>
+        <Link to="/subtopics" className={`cursor-pointer rounded-md ${location.pathname=="/subtopics"? "bg-[rgba(84,192,111,0.25)] ":"bg-stone-950"}`}>
+        <div >
+          <LayoutGrid className={`${location.pathname=="/subtopics"? "text-green-400":"text-stone-100"} m-4`}/>
         </div>
         </Link>
         <Link to="/chat" className={`cursor-pointer rounded-md ${location.pathname=="/chat"? "bg-[rgba(84,192,111,0.25)] ":"bg-stone-950"}`}>
         <div >
           <MessageCircle className={`${location.pathname=="/chat"? "text-green-400":"text-stone-100"} m-4`}/>
-        </div>
-        </Link>
-        <Link to="/home" className={`cursor-pointer rounded-md ${location.pathname=="/home"? "bg-[rgba(84,192,111,0.25)] ":"bg-stone-950"}`}>
-        <div >
-          <LayoutGrid className={`${location.pathname=="/home"? "text-green-400":"text-stone-100"} m-4`}/>
         </div>
         </Link>
         <Link to="/study-notes" className={`cursor-pointer rounded-md ${location.pathname=="/study-notes"? "bg-[rgba(84,192,111,0.25)] ":"bg-stone-950"}`}>

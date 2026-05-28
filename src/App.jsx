@@ -8,6 +8,7 @@ import Chat from './Pages/chat/chatLayout'
 import Home from './Pages/homePage/home'
 import StudyNotes from "./Pages/StudyNotes/studyNotes";
 import Signup from "./Pages/Authentication/Signup";
+import History from "./Pages/History/History"
 
 function App() {
 
@@ -19,8 +20,9 @@ function App() {
     <Route path="/dashboard" element={<Page2 />} />
     <Route path="/page3" element={<Page3/>}/>
     <Route path="/chat" element={<Chat />} />
-    <Route path="/home" element={<Home />} />
+    <Route path="/subtopics" element={<Home />} />
     <Route path="/study-notes" element={<StudyNotes />} />
+    <Route path="/history" element={<History/>}/>
     </Routes>
   )
 }

@@ -45,9 +45,9 @@ const Login = () => {
         localStorage.setItem("access_token", data.access_token);
 
         console.log("Login successful! Token saved.");
-        alert("Success! You are now logged in.");
+        // alert("Success! You are now logged in.");
 
-        navigate("/dashboard")
+        navigate("/info")
       } else {
        
         setErrorMessage(data.detail || "Login failed. Please try again.");

@@ -1,56 +1,92 @@
- import React from 'react';
- import {useState} from 'react';
- import { Link } from "react-router-dom";
- 
- import Logo from './logo'; 
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Logo from "./logo";
 
 export default function Dashboard() {
-    const [selectedClass, setClasses] = useState(5); 
-    const classes = [5,6,7,8,9,10,11,12];
-    const handleClick = () => {
-    };
+  const [selectedClass, setSelectedClass] = useState(5);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const classes = [5, 6, 7, 8, 9, 10, 11, 12];
+
+  const handleClick = async () => {
+  setLoading(true);
+
+  const token = localStorage.getItem("access_token") || "YOUR_ACCESS_TOKEN_HERE";
+
+  try {
+    const response = await axios.put(
+      "http://localhost:8000/api/user/data",
+      null, 
+      {
+        params: {
+          user_class: selectedClass, 
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    console.log("Saving chosen grade success:", response.data);
+    navigate("/dashboard");
+  } catch (error) {
+    console.error("Failed to save user data:", error.response?.data || error.message);
+    alert("Something went wrong saving your grade. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
-          <div className="min-h-screen w-screen pl-3 pr-3 bg-[#121212] text-white flex flex-col items-center justify-center font-sans">
-            <div className="w-full text-center">
-                <div className="space-y-3">
-                 <h1 className="text-3xl font-semibold flex items-center justify-center ">
-                  <span>Welcome to</span>
-                  <Logo className="h-11 ml-2 w-auto" />
-                 </h1>
+    <div className="min-h-screen w-full bg-[#000000] text-stone-100 flex flex-col items-center justify-center font-sans px-4">
+      <div className="w-full max-w-3xl mx-auto text-center">
+        {/* Header Section */}
+        <div className="space-y-3 mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold flex items-center justify-center tracking-tight">
+            <span>Welcome to</span>
+            <Logo className="h-10 ml-2.5 w-auto" />
+          </h1>
+          <p className="text-zinc-400 text-sm md:text-base max-w-md mx-auto leading-relaxed">
+            To personalize your learning journey, please select your grade
+            level.
+          </p>
+        </div>
 
-                 <p className="text-[#c8c8c8] text-sm md:text-base font-normal">To personalize your learning journey, please select your grade level.
-                 </p>
-                </div>
-                <div className= "grid grid-cols-2 gap-4 sm:grid-cols-4 pt-4 max-w-4xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
-                     {classes.map((grade, index) => {
-                        const isSelected = selectedClass === grade;
-                        return (
-                  <button
-              
-                onClick={() => setClasses(grade)}
-                className={`py-10 px-2 rounded-xl text-lg font-medium transition-all duration-200 border-2 block w-full
-                  ${isSelected 
-                    ? 'bg-[#1a2e22] border-[#3b7a57] text-white shadow-lg' 
-                    : 'bg-[#1e1e1e] border-transparent text-[#a0a0a0] hover:border-gray-700 hover:text-white'
+       
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 mt-6">
+          {classes.map((grade) => {
+            const isSelected = selectedClass === grade;
+            return (
+              <button
+                key={grade}
+                disabled={loading}
+                onClick={() => setSelectedClass(grade)}
+                className={`py-6 px-4 rounded-xl text-lg font-semibold transition-all duration-200 border-2 w-full active:scale-[0.98] select-none disabled:opacity-50
+                  ${
+                    isSelected
+                      ? "bg-emerald-950/40 border-emerald-600 text-emerald-400 shadow-md shadow-emerald-950/50"
+                      : "bg-zinc-900/60 border-zinc-800/80 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
                   }`}
               >
                 Class {grade}
               </button>
-                        );
-                      })
-                     }
-                </div>
-                    <div className="pt-7">
-                      <Link to="/page2">
-                     <button  
-                     onClick={handleClick}
-                     className="bg-[#245f3b] hover:bg-[#419360] text-[#000000] 
-                     font-bold py-3 px-12 rounded-xl text-base tracking-wide transition-colors shadow-lg" >Continue</button>
-                     </Link>
-                    </div>
-                    
-            </div>
-          </div>
+            );
+          })}
+        </div>
+
+        
+        <div className="mt-8">
+          <button
+            onClick={handleClick}
+            disabled={loading}
+            className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3.5 px-14 rounded-xl text-base tracking-wide transition-all duration-200 shadow-lg hover:shadow-emerald-900/30 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {loading ? "Saving..." : "Continue"}
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }

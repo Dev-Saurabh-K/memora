@@ -1,61 +1,95 @@
-
-
-
-export default function MainContent({ onTermClick }) {
+export default function MainContent({ onTermClick, data, subject, topic }) {
   return (
-    <div className="flex-1 p-6 overflow-y-auto border-r border-[#1B231B] space-y-6 max-w-4xl">
-      
-      <div className="flex items-center justify-between border-b border-gray-400">
-        <h1 className="text-gray-100 text-xl font-semibold flex items-center gap-2">
-          <span className="text-sm  bg-[#152E1C] text-[#4ade80] px-2 py-0.5 rounded">Biology</span>
-            Cell Division & Growth Notes
-        </h1>
+    <div className="flex-1 space-y-6 max-w-none">
+      {/* HEADER */}
+      <div className="flex items-center justify-between border-b border-white/10 pb-4">
+        <h2 className="text-zinc-100 text-xl font-semibold flex items-center gap-2 flex-wrap">
+          {subject && (
+            <span className="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded-md font-medium uppercase tracking-wider">
+              {subject}
+            </span>
+          )}
+          <span className="text-zinc-400 font-normal">
+            {topic ? `${topic} Notes` : "AI Generated Notes"}
+          </span>
+        </h2>
       </div>
 
-    
-      <div className="prose prose-invert text-[15px] leading-relaxed text-gray-300 space-y-4">
-        <p>
-            Cell division is a fundamental process in biology that allows organisms to grow, reproduce, and maintain their tissues. It involves the duplication of genetic material and the distribution of this material into two daughter cells. The process is tightly regulated by various cellular mechanisms to ensure proper growth and development. 
-            One key aspect of cell division is the role of the{' '}  
-          <span className="bg-[#152E1C] text-[#4ade80] px-1 rounded cursor-pointer hover:brightness-110">
-            cell cycle
-          </span>{' '}
-            which consists of distinct phases: G1, S, G2, and M. During the G1 phase, the cell grows and prepares for DNA replication.
-             The S phase is where DNA synthesis occurs, resulting in the duplication of the genetic material. 
-             In the G2 phase, the cell continues to grow and prepares for mitosis. Finally, during the M phase, the cell undergoes mitosis,
-              where the duplicated chromosomes are separated into two daughter cells.
-        </p>
+      {/* CONTENT */}
+      <div className="prose prose-invert max-w-none text-[15px] leading-relaxed text-zinc-300">
+        {/* MAIN PARAGRAPH
+        {data?.paragraph ? (
+          <p className="whitespace-pre-line leading-8 text-zinc-300">
+            {data.paragraph}
+          </p>
+        ) : (
+          <p className="text-zinc-500 italic">No note content available.</p>
+        )} */}
+        {/* MAIN PARAGRAPH */}
+        {data?.topic_notes ? (
+          <p className="whitespace-pre-line leading-8 text-zinc-300">
+            {data.topic_notes}
+          </p>
+        ) : (
+          <p className="text-zinc-500 italic">No note content available.</p>
+        )}
 
-        <p>
-            The efficiency of cell division is influenced by various factors, including the{' '}
+        {/* KEYWORDS */}
+        {data?.keywords && data.keywords.length > 0 && (
+          <div className="pt-8 border-t border-white/5 mt-8">
+            <h3 className="text-zinc-200 text-base font-semibold mb-4">
+              Important Keywords
+            </h3>
 
-          <span 
-            onClick={() => onTermClick('chloroplasts')}
-            className="bg-[#1E3F27] text-[#4ade80] px-1 rounded border border-[#2e623d] cursor-pointer font-medium hover:bg-[#254f31]"
-          >
-            Chloroplasts  
-          </span>{' '}
-            which are essential organelles in plant cells responsible for photosynthesis.
-        </p>
-
-        <h2 className="text-gray-200 text-base font-medium pt-4">chloroplasts </h2>
-        <p>
-            Chloroplasts are specialized organelles found in plant cells and some algae that play a crucial role in photosynthesis,
-             the process by which light energy is converted into chemical energy. They contain the pigment chlorophyll, which gives plants their green color and allows them to capture light energy.
-          <span className="text-[#4ade80] underline decoration-[#2e623d] underline-offset-4 cursor-pointer hover:bg-[#254f31]">
-            Chloroplasts
-          </span>{' '}
-          or surrounding cells manifest as mutations.
-        </p>
+            <div className="flex flex-wrap gap-2.5">
+              {data.keywords.map((word, index) => (
+                <button
+                  key={index}
+                  onClick={() => onTermClick(word)}
+                  className="
+                    px-3 py-1.5
+                    rounded-xl
+                    bg-white/5
+                    border border-white/10
+                    text-zinc-300
+                    text-sm
+                    hover:bg-emerald-500/10
+                    hover:border-emerald-500/30
+                    hover:text-emerald-400
+                    hover:scale-[1.02]
+                    transition-all duration-200
+                  "
+                >
+                  {word}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
-      
-      <div className="mt-8 pt-4  ">
-        <input 
-          type="text" 
-          placeholder="Type a message or ask AI..." 
-          className="w-full bg-[#141A14] border border-gray-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#385338] text-gray-200 placeholder-gray-400"
-        />
+      {/* CHAT INPUT */}
+      <div className="mt-8 pt-6 border-t border-white/5">
+        <div className="relative">
+          <input
+            type="text"
+            placeholder={`Ask AI a question about ${topic || "this topic"}...`}
+            className="
+              w-full
+              bg-white/[0.02]
+              border border-white/10
+              rounded-xl
+              px-4 py-3.5
+              text-sm
+              focus:outline-none
+              focus:border-emerald-500/50
+              focus:bg-white/[0.04]
+              text-zinc-200
+              placeholder-zinc-500
+              transition-all duration-300
+            "
+          />
+        </div>
       </div>
     </div>
   );

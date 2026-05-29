@@ -1,8 +1,11 @@
+import { index } from "@langchain/core/indexing";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 const History = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true); 
   const limit = 3;
@@ -30,6 +33,17 @@ const History = () => {
 
     fetchHistory();
   }, [limit]);
+
+  const handleClick = (index) => {
+  navigate("/subtopics", {
+    state: {
+      history_group: data[index]?.history_group,
+    },
+
+  });
+  // console.log(data[index]?.history_group)
+};
+  // handleClick();
 
   return (
     <div className="max-w-2xl mx-auto w-full text-stone-50 font-sans px-4 py-6">
@@ -60,9 +74,11 @@ const History = () => {
             />
           ))
         ) : data.length > 0 ? (
-          data.map((item) => (
+          data.map((item, index) => (
             <div
               key={item.id || item._id}
+
+              onClick={()=>handleClick(index)}
               
               className="group relative w-full p-5 border border-stone-800 bg-stone-900/40 rounded-xl flex flex-col justify-between items-start gap-4 hover:border-stone-600 hover:bg-stone-900 transition-all duration-200 ease-out cursor-pointer active:scale-[0.99]"
             >
